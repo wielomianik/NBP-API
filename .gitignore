@@ -2,3 +2,6 @@
 /__pycache__
 cash.ico
 list.txt
+/build
+/dist
+main.spec
