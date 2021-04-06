@@ -116,8 +116,8 @@ def finalDownload(finalDays, finalCurrencyCode, finalCurrencyName):
     return downloadedCurrency
 
 
-usd = finalDownload(1700, 'usd', 'USD')
-euro = finalDownload(1700, 'eur', 'EURO')
+usd = finalDownload(1702, 'usd', 'USD')
+euro = finalDownload(1702, 'eur', 'EURO')
 
 finalCurrency = usd
 finalCurrency = finalCurrency.assign(EURO=pd.Series(euro['EURO']).values)
