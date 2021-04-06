@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 import datetime as dt
-import matplotlib.pyplot as plt
 import numpy as np
 
 #### dict_keys(['table', 'currency', 'code', 'rates'])
@@ -114,22 +113,3 @@ def finalDownload(finalDays, finalCurrencyCode, finalCurrencyName):
     downloadedCurrency = downloadedCurrency.reset_index(drop=True)
     
     return downloadedCurrency
-
-
-usd = finalDownload(1702, 'usd', 'USD')
-euro = finalDownload(1702, 'eur', 'EURO')
-
-finalCurrency = usd
-finalCurrency = finalCurrency.assign(EURO=pd.Series(euro['EURO']).values)
-
-
-size = finalCurrency.shape[0]
-x = np.arange(0, size)
-plt.plot(x, finalCurrency['USD'][::-1], finalCurrency['EURO'][::-1])
-xlabel = " ".join((str(finalCurrency['Data'].values[-1]), ' to ', str(finalCurrency['Data'][0])))
-plt.xlabel(xlabel)
-plt.ylabel('Wartość w zł')
-plt.legend(['USD', 'EURO'])
-plt.xticks([])
-plt.show()
-    
