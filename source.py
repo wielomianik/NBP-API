@@ -5,7 +5,7 @@ import numpy as np
 
 #### dict_keys(['table', 'currency', 'code', 'rates'])
 
-def getCurrencyLow(days, currency, currencyName):
+def getCurrencyLow(days, currency, currencyName): # Getting currency below 350 days (used for getting data from larger time periods)
     today = dt.datetime.today()
     for i in range(days + 1):
         last = today - dt.timedelta(days = i)
@@ -22,7 +22,7 @@ def getCurrencyLow(days, currency, currencyName):
     data.rename(columns=NewNames, inplace=True)
     return data
 
-def getCurrency(numberofDays, currency, currencyName):
+def getCurrency(numberofDays, currency, currencyName): # Downloading currency data from larger time periods
     
     if numberofDays < 350:
         
@@ -65,6 +65,13 @@ def getCurrency(numberofDays, currency, currencyName):
                 
         return results
 
+#################################################################################
+############################### Final function ##################################
+#
+#       Modifying downloaded data, adding the previous day 
+#       to holidays in order to complete all records.
+#
+#################################################################################
 
 def finalDownload(finalDays, finalCurrencyCode, finalCurrencyName):
     

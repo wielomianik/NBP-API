@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def downloadData():
+def downloadData():  #Downloading data by using finalDownload function
     loadedData = inputData()
     days, currency = int(loadedData[0]), str(loadedData[1])
     currencyLow = currency.lower()
@@ -14,7 +14,7 @@ def downloadData():
     drawPlot(downloadData.database, currency)
 
 
-def drawPlot(data, currency):
+def drawPlot(data, currency):  #Plotting data
     size = data.shape[0]
     x = np.arange(0, size)
     plt.plot(x, data[currency][::-1])
@@ -25,7 +25,7 @@ def drawPlot(data, currency):
     plt.xticks([])
     plt.show()
 
-def inputData():
+def inputData(): # Getting data from user input
     days = inputBox.get()
     currency = inputBox_2.get()
     return [days, currency]
@@ -38,7 +38,7 @@ def anotherDownload():
     inputBox.delete(0, END)
     inputBox_2.delete(0, END)
 
-def openFile():
+def openFile():  # Build - in txt file with currency codes
     top = Toplevel()
     top.title('Currency codes')
     top.geometry('500x700')
@@ -46,6 +46,8 @@ def openFile():
     openTXT.pack(side='top', expand=1, fill='both')
     openTXT.display_file("list.txt")
 
+#################################################################################
+############################## Tkinter section ##################################
 
 root = Tk()
 root.title("NBP - API")
